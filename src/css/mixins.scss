@@ -1,0 +1,53 @@
+@import './variables.scss';
+
+@mixin number($number, $top, $left, $size, $fontSize) {
+    content: $number;
+    display: block;
+    position: absolute;
+    top: $top;
+    left: $left;
+    width: $size;
+    height: $size;
+    background-color: aqua;
+    border-radius: 50%;
+    color: $work-number-color;
+    font-weight: bold;
+    font-size: $fontSize;
+    line-height: $size;
+    text-align: center;
+    font-family: sans-serif;
+
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+@mixin small-number($number, $top, $left, $size: 36px, $fontSize: 24px) {
+    @include number($number, $top, $left, $size, $fontSize);
+}
+
+@mixin big-number($number, $top, $left, $size: 60px, $fontSize: 32px) {
+    @include number($number, $top, $left, $size, $fontSize);
+}
+
+@mixin point($size, $top, $left, $right) {
+    content: '';
+    display: block;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    background-color: $work-point-color;
+}
+
+@mixin left-point($size, $top, $left) {
+    @include point($size, $top, $left, none);
+    transform: translate(-50%, -50%);
+}
+
+@mixin right-point($size, $top, $right) {
+    @include point($size, $top, none, $right);
+    transform: translate(50%, -50%);
+}
